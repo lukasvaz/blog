@@ -12,8 +12,8 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <article style={{ maxWidth: 900, margin: '32px auto', padding: '0 16px' }}>
-      <h1 style={{ marginBottom: 8 }}>{post.frontmatter.title || slug}</h1>
-      <p style={{ color: '#666', marginTop: 0 }}>{post.frontmatter.date || ''}</p>
+      <h1 style={{ marginBottom: 8 }}>{post.title}</h1>
+      <p style={{ color: '#666', marginTop: 0 }}>{post.date ?? ''}</p>
 
       <div style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6, marginTop: 24 }}>
         {post.content}
@@ -21,10 +21,10 @@ export default async function PostPage({ params }: Props) {
     </article>
   );
 }
-
+  
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Post not found' };
-  return { title: post.frontmatter.title || slug };
+  return { title: post.title };
 }

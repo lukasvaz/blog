@@ -12,7 +12,7 @@ export function Header() {
         <nav>
 
           <span style={{ display: 'inline-block' }}>
-            <Link className={"text-soft-foreground"} href="/posts" style={{ marginRight: 12 }}>Posts</Link>
+            <Link className={"text-soft-foreground"} href="/" style={{ marginRight: 12 }}>Posts</Link>
             <Link href="/about" className={"text-soft-foreground"}>About me </Link>
           </span>
         </nav>

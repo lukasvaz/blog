@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "example-post",
+    "title": "Example Post",
+    "subtitle": "A short intro to the example post",
+    "date": "2026-02-18",
+    "thumbnail": "/images/example-thumb.jpg",
+    "content": "This is the full content of the example post.\n\nYou can write markdown here; this dummy content is plain text in the JSON file.\n\n- Point one\n- Point two\n\nEnd of example."
+  },
+  {
+    "slug": "second-post",
+    "title": "Second Post",
+    "subtitle": "More on building with Next.js",
+    "date": "2026-02-20",
+    "thumbnail": "/images/second-thumb.jpg",
+    "content": "Second post full content.\n\nThis post demonstrates another example entry with frontmatter and content stored in JSON for testing."
+  }
+]

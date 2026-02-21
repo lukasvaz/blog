@@ -1,34 +1,52 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const postsDir = path.join(process.cwd(), 'data', 'posts');
+// Type declarations for blog posts
+export interface PostSummary {
+  slug: string;
+  title?: string;
+  subtitle?: string;
+  date?: string;
+  thumbnail?: string;
+}
 
-export async function getPostBySlug(slug: string) {
-  const file = path.join(postsDir, `${slug}.md`);
+export interface Post extends PostSummary {
+  content: string;
+  frontmatter: Record<string, string>;
+}
+
+
+// New: read post summaries from data/post-summaries.json
+export async function getAllPostSummaries(): Promise<PostSummary[]> {
   try {
+    const file = path.join(process.cwd(), 'data','posts', 'post-summaries.json');
     const raw = await fs.readFile(file, 'utf8');
-    const match = raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)/);
-    const frontmatter: Record<string, string> = {};
-    if (match) {
-      for (const line of match[1].split('\n')) {
-        const [k, ...v] = line.split(':');
-        frontmatter[k.trim()] = v.join(':').trim();
-      }
-    }
-    const content = match ? match[2].trim() : raw;
-    return { slug, frontmatter, content };
-  } catch (err) {
-    return null;
+    const parsed = JSON.parse(raw) as PostSummary[];
+    return parsed;
+  } catch {
+    return [];
   }
 }
 
-export async function getAllPosts() {
+// Refactor: return full posts from data/posts.json (useful for testing / CMS fallback)
+export async function getAllPosts(): Promise<Post[]> {
   try {
-    const files = await fs.readdir(postsDir);
-    return files
-      .filter((f) => f.endsWith('.md'))
-      .map((f) => ({ slug: f.replace(/\.md$/, '') }));
+    const file = path.join(process.cwd(), 'data','posts', 'posts.json');
+    const raw = await fs.readFile(file, 'utf8');
+    const parsed = JSON.parse(raw) as Post[];
+    return parsed;
   } catch {
     return [];
+  }
+}
+
+// Refactor: search posts.json by title or slug
+export async function getPostBySlug(search: string): Promise<Post | null> {
+  try {
+    const posts = await getAllPosts();
+    const found = posts.find((p) => p.slug === search || p.title === search);
+    return found ?? null;
+  } catch {
+    return null;
   }
 }
