@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getPostBySlug } from '../../../lib/posts';
+import { getPostBySlug } from '@/lib';
 
 type Props = { params: Promise<{ slug: string }> | { slug: string } };
 
