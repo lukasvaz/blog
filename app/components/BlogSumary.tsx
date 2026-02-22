@@ -4,7 +4,7 @@ import type { PostSummary } from '@/lib/posts';
 
 export function BlogSummary({ post }: { post: PostSummary }) {
   return (
-    <article className="w-2xl  py-4 border-b border-soft-foreground/20">
+    <article className="w-full  py-4 border-b border-soft-foreground/20">
       <Link href={`/posts/${post.slug}`} className="text-inherit no-underline flex items-start gap-4">
         <div className="flex-1">
           <h2 className="m-0 text-3xl font-semibold">
