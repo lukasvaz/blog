@@ -4,13 +4,13 @@
     "title": "Example Post",
     "subtitle": "A short intro to the example post",
     "date": "2026-02-18",
-    "thumbnail": "/images/example-thumb.jpg"
+    "thumbnail": "https://picsum.photos/300/150"
   },
   {
     "slug": "second-post",
     "title": "Second Post",
     "subtitle": "More on building with Next.js",
     "date": "2026-02-20",
-    "thumbnail": "/images/second-thumb.jpg"
+    "thumbnail": "https://picsum.photos/300/150"
   }
 ]
