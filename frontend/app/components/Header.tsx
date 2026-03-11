@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <header className='py-4 border-b border-soft-foreground/20 mb-8'>
-      <div className='flex items-center justify-between max-w-3xl mx-auto px-4'>
+      <div className='flex items-centnpmer justify-between max-w-3xl mx-auto px-4'>
         <div className='text-2xl font-bold'>
           <Link href="/">Dev Blogs</Link>
         </div>
