@@ -1,7 +1,4 @@
-import { error } from 'console';
-import fs from 'fs/promises';
-import path from 'path';
-
+import { type BlocksContent } from "@strapi/blocks-react-renderer";
 // Type declarations for blog posts
 export interface PostSummary {
   slug: string;
@@ -12,7 +9,7 @@ export interface PostSummary {
 }
 
 export interface Post extends PostSummary {
-  content: string;
+  content: BlocksContent;
 }
 const STRAPI_URL = process.env.STRAPI_URL;
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN;
