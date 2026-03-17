@@ -35,11 +35,11 @@ export async function getAllPostSummaries(): Promise<PostSummary[]> {
       title: item.title,
       subtitle: item.subtitle,
       date: item.date,
-      thumbnail: item.thumbnail?.data?.attributes?.url || null,
+      thumbnail: item.thumbnail?.url ? `${STRAPI_URL}${item.thumbnail?.url}` : null,
     }));
     return summaries;   
-  } catch  {
-    console.error('Error fetching post summaries');
+  } catch (e) {
+    console.error('Error fetching post summaries', e);
     return [];
   }
 }
